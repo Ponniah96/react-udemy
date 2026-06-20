@@ -1,3 +1,4 @@
+import ImageCarousel from "./ImageCarousel";
 function TopicSection({ topic }) {
   return (
     <section id={topic.id} className="topic-section">
@@ -30,6 +31,10 @@ function TopicSection({ topic }) {
           <li key={i}>{concept}</li>
         ))}
       </ul>
+
+      {topic.images && topic.images.length > 0 && (
+        <ImageCarousel images={topic.images} title="Images" />
+      )}
     </section>
   );
 }

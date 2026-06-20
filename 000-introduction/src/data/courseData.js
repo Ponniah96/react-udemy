@@ -7,8 +7,52 @@ export const courseInfo = {
 
 export const topics = [
   {
-    id: "pure-react",
+    id: "prerequisites",
     sectionNumber: "01",
+    title: "Prerequisites",
+    overview:
+      "Introduction to front-end frameworks, disadvantages of using vanilla JS, and the need for React.",
+    concepts: [
+      "Front-end frameworks overview (History and evolution of front-end frameworks from server-side rendering to client-side rendering)",
+      "Disadvantages of vanilla JS for large applications (DOM complexity and UI sync with data issues)",
+      "Why React is needed",
+    ],
+    images: [
+      "/images/react-1.png",
+      "/images/react-2.png",
+      "/images/react-3.png",
+      "/images/react-4.png",
+      "/images/react-5.png",
+    ],
+  },
+  {
+    id: "react-intro",
+    sectionNumber: "02",
+    title: "React Introduction",
+    overview:
+      "Introduction to React, its core concepts, and the benefits of using React for building user interfaces. React'is most popular, declarative, component based , state driven library for building user interfaces.",
+    concepts: [
+      "Component-based architecture (building UI with reusable components)",
+      "Declarative programming (describing what the UI should look like based on state)",
+      "State-driven UI (UI updates automatically when state changes)",
+      "Library vs. framework (React is a library because it focuses on building UI components rather than providing a full-fledged framework)",
+      "Most popular front-end library (React's popularity and community support)",
+      "React's ecosystem (React Router, Redux, Next.js, etc.)",
+    ],
+    images: [
+      "/images/react-6.png",
+      "/images/react-7.png",
+      "/images/react-8.png",
+      "/images/react-9.png",
+      "/images/react-10.png",
+      "/images/react-11.png",
+      "/images/react-12.png",
+      "/images/react-13.png",
+    ],
+  },
+  {
+    id: "pure-react",
+    sectionNumber: "03",
     title: "Pure React",
     overview:
       "Introduction to React without any build tools. Uses React loaded from CDN via script tags and React.createElement() directly without JSX.",
@@ -22,7 +66,7 @@ export const topics = [
   },
   {
     id: "js-review",
-    sectionNumber: "02",
+    sectionNumber: "04",
     title: "JavaScript Review",
     overview:
       "Essential JavaScript review before diving into React. Covers modern ES6+ features that are frequently used in React development.",
@@ -41,7 +85,7 @@ export const topics = [
   },
   {
     id: "pizza-menu",
-    sectionNumber: "03",
+    sectionNumber: "05",
     title: "Pizza Menu",
     projectName: "Fast React Pizza Co.",
     projectDescription:
@@ -60,7 +104,7 @@ export const topics = [
   },
   {
     id: "steps",
-    sectionNumber: "04",
+    sectionNumber: "06",
     title: "Steps",
     projectName: "Steps Component",
     projectDescription:
@@ -79,7 +123,7 @@ export const topics = [
   },
   {
     id: "travel-list",
-    sectionNumber: "05",
+    sectionNumber: "07",
     title: "Travel List",
     projectName: "Far Away",
     projectDescription:
@@ -97,7 +141,7 @@ export const topics = [
   },
   {
     id: "eat-n-split",
-    sectionNumber: "06",
+    sectionNumber: "08",
     title: "Eat-N-Split",
     projectName: "Eat-N-Split",
     projectDescription:
@@ -116,7 +160,7 @@ export const topics = [
   },
   {
     id: "usepopcorn",
-    sectionNumber: "07",
+    sectionNumber: "09",
     title: "usePopcorn",
     projectName: "usePopcorn",
     projectDescription:
@@ -136,7 +180,7 @@ export const topics = [
   },
   {
     id: "how-react-works",
-    sectionNumber: "08",
+    sectionNumber: "10",
     title: "How React Works",
     overview:
       "Understanding React's internals — how rendering, diffing, and reconciliation work behind the scenes.",
@@ -151,7 +195,7 @@ export const topics = [
   },
   {
     id: "classy-weather",
-    sectionNumber: "09",
+    sectionNumber: "11",
     title: "Classy Weather",
     projectName: "Classy Weather",
     projectDescription:
@@ -170,7 +214,7 @@ export const topics = [
   },
   {
     id: "react-quiz",
-    sectionNumber: "10",
+    sectionNumber: "12",
     title: "React Quiz",
     projectName: "The React Quiz",
     projectDescription:
@@ -187,7 +231,7 @@ export const topics = [
   },
   {
     id: "worldwise",
-    sectionNumber: "11",
+    sectionNumber: "13",
     title: "WorldWise",
     projectName: "WorldWise",
     projectDescription:
@@ -207,7 +251,7 @@ export const topics = [
   },
   {
     id: "atomic-blog",
-    sectionNumber: "12",
+    sectionNumber: "14",
     title: "Atomic Blog",
     projectName: "The Atomic Blog",
     projectDescription:
@@ -225,7 +269,7 @@ export const topics = [
   },
   {
     id: "workout-timer",
-    sectionNumber: "13",
+    sectionNumber: "15",
     title: "Workout Timer",
     projectName: "Workout Timer",
     projectDescription:
@@ -242,7 +286,7 @@ export const topics = [
   },
   {
     id: "redux-intro",
-    sectionNumber: "15",
+    sectionNumber: "16",
     title: "Redux Introduction",
     projectName: "The React-Redux Bank",
     projectDescription:
@@ -261,7 +305,7 @@ export const topics = [
   },
   {
     id: "fast-react-pizza",
-    sectionNumber: "16",
+    sectionNumber: "17",
     title: "Fast React Pizza",
     projectName: "Fast React Pizza",
     projectDescription:
@@ -280,7 +324,7 @@ export const topics = [
   },
   {
     id: "the-wild-oasis",
-    sectionNumber: "17",
+    sectionNumber: "18",
     title: "The Wild Oasis",
     projectName: "The Wild Oasis",
     projectDescription:
@@ -304,7 +348,7 @@ export const topics = [
   },
   {
     id: "manual-ssr",
-    sectionNumber: "20",
+    sectionNumber: "19",
     title: "Manual Server-Side Rendering",
     overview:
       "Understanding SSR fundamentals by manually rendering React on the server using renderToString() with a raw Node.js HTTP server.",
@@ -318,7 +362,7 @@ export const topics = [
   },
   {
     id: "wild-oasis-website",
-    sectionNumber: "21",
+    sectionNumber: "20",
     title: "The Wild Oasis Website",
     projectName: "The Wild Oasis Website",
     projectDescription:
@@ -340,7 +384,7 @@ export const topics = [
   },
   {
     id: "nextjs-pages-router",
-    sectionNumber: "22",
+    sectionNumber: "21",
     title: "Next.js Pages Router",
     overview:
       "Exploring the Next.js Pages Router pattern — the older but still widely-used approach to building Next.js applications.",
@@ -356,3 +400,21 @@ export const topics = [
 ];
 
 export const projects = topics.filter((t) => t.projectName);
+
+export const videoInformation = [
+  {
+    id: "prerequisites",
+    Sno: "09",
+    description: "History of Front-End Frameworks",
+  },
+  {
+    id: "prerequisites",
+    Sno: "10",
+    description: "disadvantages of Vanilla JS (DOM, Sync with data)",
+  },
+  {
+    id: "react-intro",
+    Sno: "11",
+    description: "React Detailed Introduction",
+  },
+];

@@ -1,17 +1,13 @@
 import Header from "./components/Header";
 import TableOfContents from "./components/TableOfContents";
 import TopicSection from "./components/TopicSection";
-import ImageCarousel from "./components/ImageCarousel";
 import PdfEmbed from "./components/PdfEmbed";
-import { courseInfo, topics, projects } from "./data/courseData";
-
-const courseImages = [
-  "/images/react-1.png",
-  "/images/react-2.png",
-  "/images/react-3.png",
-  "/images/react-4.png",
-  "/images/react-5.png",
-];
+import {
+  courseInfo,
+  topics,
+  projects,
+  videoInformation,
+} from "./data/courseData";
 
 function App() {
   return (
@@ -22,11 +18,10 @@ function App() {
         overview={courseInfo.overview}
       />
 
-      <TableOfContents topics={topics} projects={projects} />
-
-      <ImageCarousel
-        images={courseImages}
-        title="Important Video & Screenshots"
+      <TableOfContents
+        topics={topics}
+        projects={projects}
+        videoInformation={videoInformation}
       />
 
       {topics.map((topic) => (
