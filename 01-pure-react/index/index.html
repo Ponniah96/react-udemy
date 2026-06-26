@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pure React</title>
+  </head>
+  <body>
+    <h1>Welcome to Pure React</h1>
+    <p>
+      In this page, we will create a simple react application from scratch using
+      only JavaScript and HTML.
+    </p>
+    <p>Requirements</p>
+    <ul>
+      <li>External script files</li>
+      <li>ReactDOM.createRoot()</li>
+      <li>ReactDOM.render()</li>
+      <li>React.createElement()</li>
+      <li>React.useState()</li>
+      <li>React.useEffect()</li>
+    </ul>
+
+    <div id="root"></div>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script>
+      function App() {
+        const [time, setTime] = React.useState(new Date().toLocaleTimeString());
+        React.useEffect(function () {
+          setInterval(function () {
+            setTime(new Date().toLocaleTimeString());
+          }, 1000);
+        }, []);
+        return React.createElement(
+          "h3",
+          null,
+          `Hello, Pure React! The current time is ${time}`,
+        );
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(React.createElement(App));
+    </script>
+  </body>
+</html>

@@ -4,9 +4,11 @@ function TopicSection({ topic }) {
     <section id={topic.id} className="topic-section">
       <h2>
         {topic.sectionNumber}. {topic.title}{" "}
-        <a href="#" className="learn-more">
-          Learn More
-        </a>
+        {topic.link && (
+          <a href={topic.link} className="learn-more">
+            Learn More
+          </a>
+        )}
       </h2>
 
       {topic.projectName && (
