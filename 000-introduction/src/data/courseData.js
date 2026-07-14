@@ -84,6 +84,7 @@ export const topics = [
       "Essential JavaScript review before diving into React. Covers modern ES6+ features that are frequently used in React development.",
     concepts: [
       "Destructuring (objects and arrays)",
+      "Rest (...args comes last) and Spread operators(...args comes first)",
       "Template literals",
       "Ternary operator",
       "Arrow functions",
@@ -98,20 +99,43 @@ export const topics = [
   {
     id: "pizza-menu",
     sectionNumber: "05",
-    title: "Pizza Menu",
+    title: "React Essentials: Components, Props, and JSX",
     projectName: "Fast React Pizza Co.",
     projectDescription:
       "A pizza restaurant menu that displays a list of pizzas with images, ingredients, and prices. Handles sold-out items with conditional styling.",
     overview:
       "First real React project covering the fundamentals of components, props, and JSX.",
     concepts: [
-      "Components",
-      "Props",
-      "JSX syntax and rules",
+      "React 18- React 18 introduces a new root API for rendering React applications. ",
+      "ReactDOM.createRoot() - ReactDOM.createRoot() is a method introduced in React 18 that creates a root for rendering a React application. It replaces the older ReactDOM.render() method and enables concurrent features in React.",
+      "React.StrictMode - React.StrictMode is a wrapper component that helps identify potential problems in an application during development. It activates additional checks and warnings for its descendants, such as detecting deprecated APIs, identifying side effects, and highlighting potential issues with the component tree.",
+      "Why assests files under public folder - Assets files (images, fonts, etc.) are placed under the public folder in a React application to ensure they are served as static files and can be accessed directly via their URLs. This allows for better performance, caching, and easier management of assets without bundling them into the JavaScript code.",
+      "JSX syntax -HTML-like syntax in JavaScript, transpiled to React.createElement() calls. JSX allows developers to write UI components in a more readable and declarative way (describes the structure and appearance of the UI).",
+      "declarative vs imperative programming - Declarative programming focuses on describing what the program should accomplish, while imperative programming focuses on how to achieve that goal through step-by-step instructions.",
+      "Example: Increment function - Imperative: let count = 0; function increment() { count++; } Declarative: const [count, setCount] = useState(0); function increment() { setCount(prevCount => prevCount + 1); }",
+      "Separation of concerns - Separation of concerns is a design principle that promotes organizing code into distinct sections, each responsible for a specific aspect of the application. In React, this is achieved by creating separate components for different UI elements and their associated logic.",
+      "CSS in React: - CSS can be applied in React using various methods, including inline styles, CSS modules, styled-components, and traditional external stylesheets.",
+      "Components (piece of UI has own logic, data, appearance that can be reused, nested, and composed)",
+      "Components have to be pure functions (no side effects, no changing props, no changing external variables) and should return the same output for the same input.",
+      "side effect means any operation that affects something outside the function scope",
+      "Props - Props (short for properties) are a way to pass data from a parent component to a child component in React.",
+      "Props allow components to be reusable and configurable by providing different values for the same component. Props are read-only and cannot be modified by the child component.",
+      "Props allows strings, numbers(age={0}), booleans, arrays, objects, functions, and even other React components to be passed as values.",
+      "Props are read-only and one-way data flow, meaning that a child component cannot modify the props it receives from its parent. If a child component needs to change its state based on user interactions or other events, it should use its own state (using useState) instead of trying to modify the props.",
       "Rendering lists with .map()",
       "Conditional rendering (ternary, &&)",
       "Component composition",
-      "CSS in React",
+    ],
+    images: [
+      "/images/react-18.png",
+      "/images/react-19.png",
+      "/images/react-20.png",
+      "/images/react-21.png",
+      "/images/react-22.png",
+      "/images/react-23.png",
+      "/images/react-24.png",
+      "/images/react-25.png",
+      "/images/react-26.png",
     ],
   },
   {
@@ -428,5 +452,34 @@ export const videoInformation = [
     id: "react-intro",
     Sno: "11",
     description: "React Detailed Introduction",
+  },
+  {
+    id: "quokka",
+    Sno: "18",
+    description: "Quokka VSCode Extension (JS Runtime Compiler)",
+  },
+];
+
+export const extensions = [
+  {
+    id: "ES Lint",
+    name: "ES Lint",
+    description:
+      "ESLint is a static code analysis tool for identifying problematic patterns found in JavaScript code.",
+    link: "https://eslint.org/",
+  },
+  {
+    id: "Material Icon Theme",
+    name: "Material Icon Theme",
+    description:
+      "Material Icon Theme is a Visual Studio Code extension that provides a set of icons for files and folders based on the Material Design guidelines.",
+    link: "https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme",
+  },
+  {
+    id: "quokka",
+    name: "Quokka",
+    description:
+      "Quokka is a rapid prototyping playground in your editor, with access to your project's files, inline reporting, code coverage and rich output formatting.",
+    link: "https://quokkajs.com/",
   },
 ];

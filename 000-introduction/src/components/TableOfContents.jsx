@@ -1,4 +1,4 @@
-function TableOfContents({ topics, projects, videoInformation }) {
+function TableOfContents({ topics, projects, videoInformation, extensions }) {
   return (
     <nav>
       <h2>Topics Discussed</h2>
@@ -24,8 +24,18 @@ function TableOfContents({ topics, projects, videoInformation }) {
       <ul>
         {videoInformation.map((video) => (
           <li key={video.id}>
-            <a href={`#${video.id}`}>
+            <a>
               {video.Sno}. {video.description}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <h2>Extensions</h2>
+      <ul>
+        {extensions.map((extension) => (
+          <li key={extension.id}>
+            <a href={extension.link} target="_blank" rel="noopener noreferrer">
+              {extension.name}
             </a>
           </li>
         ))}

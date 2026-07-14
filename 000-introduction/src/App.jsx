@@ -7,6 +7,7 @@ import {
   topics,
   projects,
   videoInformation,
+  extensions,
 } from "./data/courseData";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         topics={topics}
         projects={projects}
         videoInformation={videoInformation}
+        extensions={extensions}
       />
 
       {topics.map((topic) => (
