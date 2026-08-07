@@ -56,26 +56,41 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza key={pizza.name} pizzaObj={pizza} />
-        ))}
-      </ul>
+      {/* Calling image here inside img tag */}
+      <img src="pizzas/focaccia.jpg" alt="Focaccia" />
+      {numPizzas > 0 ? (
+        <>
+          <p>Welcome to our restaurant!</p>
+          <ul className="pizzas">
+            {/* {pizzaData.forEach((pizza) => (
+              <Pizza key={pizza.name} pizzaObj={pizza} />
+              ))} */}
+            {/* Above code will not work because forEach does not return anything. Instead, we can use map which returns a new array of JSX elements. */}
+            {pizzaData.map((pizza) => (
+              <Pizza key={pizza.name} pizzaObj={pizza} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>We're still working on our menu. Please come back later :)</p>
+      )}
     </main>
   );
 }
 
 function Pizza({ pizzaObj }) {
   return (
-    <li className="pizza">
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
         <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.price}</span>
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -84,27 +99,37 @@ function Pizza({ pizzaObj }) {
 function Footer() {
   // Write JavaScript Logic inside the component function, before the return statement
   const hour = new Date().getHours();
-  const openHour = 12;
+  const openHour = 10;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
 
   return (
     <footer className="footer">
-      {isOpen
-        ? `We're currently open until ${closeHour}:00. Come visit us or order online.`
-        : `We're currently closed. We open at ${openHour}:00.`}
-      <p></p>
+      {isOpen ? (
+        <Order closeHours={closeHour} />
+      ) : (
+        <p>{`We're currently closed. We open at ${openHour}:00.`}</p>
+      )}
     </footer>
+  );
+}
+
+function Order({ closeHours }) {
+  return (
+    <div className="order">
+      <p>{`We're currently open till ${closeHours}:00. Come visit us or order online.`}</p>
+      <button className="btn">Order</button>
+    </div>
   );
 }
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
       <Menu />
       <Footer />
-    </div>
+    </>
   );
 }
 //React Render method after React 18

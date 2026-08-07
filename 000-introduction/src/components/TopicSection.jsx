@@ -1,5 +1,6 @@
 import ImageCarousel from "./ImageCarousel";
 function TopicSection({ topic }) {
+  console.log(topic);
   return (
     <section id={topic.id} className="topic-section">
       <h2>
@@ -33,6 +34,17 @@ function TopicSection({ topic }) {
           <li key={i}>{concept}</li>
         ))}
       </ul>
+
+      {topic.projectKeyPoints && topic.projectKeyPoints.length > 0 && (
+        <>
+          <h3>Project Key Points</h3>
+          <ul>
+            {topic.projectKeyPoints.map((point, i) => (
+              <li key={i}>{point}</li>
+            ))}
+          </ul>
+        </>
+      )}
 
       {topic.images && topic.images.length > 0 && (
         <ImageCarousel images={topic.images} title="Images" />
