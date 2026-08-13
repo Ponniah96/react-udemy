@@ -49,6 +49,10 @@ function TopicSection({ topic }) {
       {topic.images && topic.images.length > 0 && (
         <ImageCarousel images={topic.images} title="Images" />
       )}
+
+      {topic.codeimages && topic.codeimages.length > 0 && (
+        <ImageCarousel images={topic.codeimages} title="Code Snippets" />
+      )}
     </section>
   );
 }

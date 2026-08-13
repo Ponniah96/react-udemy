@@ -108,7 +108,7 @@ function Footer() {
       {isOpen ? (
         <Order closeHours={closeHour} />
       ) : (
-        <p>{`We're currently closed. We open at ${openHour}:00.`}</p>
+        <p className="order">{`We're currently closed. We open at ${openHour}:00.`}</p>
       )}
     </footer>
   );
