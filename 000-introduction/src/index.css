@@ -141,6 +141,8 @@ nav a::before {
 .topic-section h2 {
   margin-top: 0;
   color: #61dafb;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
   border-bottom: 1px solid #444;
 }
 
@@ -238,4 +240,45 @@ nav a::before {
   nav ul {
     columns: 1;
   }
+}
+
+/* ===== Tab sections ===== */
+
+.tab-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+.tab-buttons button {
+  background-color: #16213e;
+  border: 1px solid #333;
+  color: #e0e0e0;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transform: scale(1.1);
+  transform: translateY(-30px);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.tab-buttons button.active {
+  background-color: #61dafb;
+  color: #1a1a2e;
+}
+.tab-section {
+  display: none;
+}
+
+.tab-section.active {
+  display: block;
+}
+
+/* Remove translate for TopicSection */
+
+.topic-section .tab-buttons button {
+  transform: translateY(-45px);
 }

@@ -54,24 +54,37 @@ function Steps() {
             <div className={step >= 3 ? "active" : ""}>3</div>
           </div>
           {/* <p className="message">{`Step ${step + 1}:${messages[step]}`}</p> */}
-          <p className="message">
+          {/* <p className="message">
             Step {step}: {messages[step - 1]}
-          </p>
+          </p> */}
+          {/* Implement general step component */}
+          {/* <StepMessage step={step} /> */}
+          {/* Implement step component using children prop */}
+          <StepMessage step={step}>{messages[step - 1]}</StepMessage>
           <div className="buttons">
-            <button
-              className="btn"
-              style={{ backgroundColor: "#7950f2", color: "white" }}
-              onClick={previousHandler}
+            {/* Before children Prop */}
+            {/* <Button
+              bgColor="#7950f2"
+              color="white"
+              onClickEvent={previousHandler}
+              text="Previous"
+              emoji="👈"
             >
+            </Button> */}
+
+            <Button
+              bgColor="#7950f2"
+              color="white"
+              onClickEvent={previousHandler}
+            >
+              <span>👈</span>
               Previous
-            </button>
-            <button
-              className="btn"
-              style={{ backgroundColor: "#7950f2", color: "white" }}
-              onClick={nextHandler}
-            >
+              {/* How this children prop works? Whatever we were calling between component tags becomes the children prop. */}
+            </Button>
+            <Button bgColor="#7950f2" color="white" onClickEvent={nextHandler}>
               Next
-            </button>
+              <span>👉</span>
+            </Button>
           </div>
         </div>
       )}
@@ -79,11 +92,33 @@ function Steps() {
   );
 }
 
+function StepMessage({ step, children }) {
+  return (
+    <p className="message">
+      <h3>Step {step}</h3>
+      {children}
+    </p>
+  );
+}
+
+function Button({ bgColor, color, children, onClickEvent }) {
+  console.log(children); // This will log the content passed between the Button component tags, which is accessible via the children prop.
+  return (
+    <button
+      className="btn"
+      style={{ backgroundColor: bgColor, color: color }}
+      onClick={onClickEvent}
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function App() {
   return (
     <div className="App">
       <Steps />
-      <Steps />
+      {/* <Steps /> */}
     </div>
   );
 }
