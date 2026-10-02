@@ -1,27 +1,27 @@
 import { useState } from "react";
-const initialFriends = [
-  {
-    id: 118836,
-    name: "Clark",
-    image: "https://i.pravatar.cc/48?u=118836",
-    balance: -7,
-    pays: true,
-  },
-  {
-    id: 933372,
-    name: "Sarah",
-    image: "https://i.pravatar.cc/48?u=933372",
-    balance: 20,
-    pays: false,
-  },
-  {
-    id: 499476,
-    name: "Anthony",
-    image: "https://i.pravatar.cc/48?u=499476",
-    balance: 0,
-    pays: false,
-  },
-];
+// const initialFriends = [
+//   {
+//     id: 118836,
+//     name: "Clark",
+//     image: "https://i.pravatar.cc/48?u=118836",
+//     balance: -7,
+//     pays: true,
+//   },
+//   {
+//     id: 933372,
+//     name: "Sarah",
+//     image: "https://i.pravatar.cc/48?u=933372",
+//     balance: 20,
+//     pays: false,
+//   },
+//   {
+//     id: 499476,
+//     name: "Anthony",
+//     image: "https://i.pravatar.cc/48?u=499476",
+//     balance: 0,
+//     pays: false,
+//   },
+// ];
 
 function Button({ children, onClick }) {
   return (
