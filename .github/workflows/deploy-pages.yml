@@ -1,0 +1,128 @@
+name: Deploy React Learning Apps
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "github-pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # --------------------------------------------------
+      # Checkout repository
+      # --------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      # --------------------------------------------------
+      # Setup Node.js
+      # --------------------------------------------------
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+
+      # --------------------------------------------------
+      # Create final deployment directory
+      # --------------------------------------------------
+      - name: Create deployment directory
+        run: |
+          rm -rf deploy
+          mkdir -p deploy
+
+      # ==================================================
+      # 1. INTRODUCTION
+      # VITE APP
+      # ==================================================
+
+      - name: Install Introduction dependencies
+        working-directory: 000-introduction
+        run: npm ci
+
+      - name: Build Introduction
+        working-directory: 000-introduction
+        run: npm run build -- --base=/react-udemy/introduction/
+
+      - name: Publish Introduction
+        run: |
+          mkdir -p deploy/introduction
+          cp -R 000-introduction/dist/. deploy/introduction/
+
+      # ==================================================
+      # 2. PIZZA MENU
+      # CREATE REACT APP
+      # ==================================================
+
+      - name: Install Pizza Menu dependencies
+        working-directory: 03-pizza-menu/starter/pizza-app
+        run: npm ci
+
+      - name: Build Pizza Menu
+        working-directory: 03-pizza-menu/starter/pizza-app
+        env:
+          PUBLIC_URL: /react-udemy/pizza-menus
+        run: npm run build
+
+      - name: Publish Pizza Menu
+        run: |
+          mkdir -p deploy/pizza-menus
+          cp -R 03-pizza-menu/starter/pizza-app/build/. deploy/pizza-menus/
+
+      # ==================================================
+      # 3. EAT N SPLIT
+      # CREATE REACT APP
+      # ==================================================
+
+      - name: Install Eat N Split dependencies
+        working-directory: 06-eat-n-split/starter/eat-n-split
+        run: npm ci
+
+      - name: Build Eat N Split
+        working-directory: 06-eat-n-split/starter/eat-n-split
+        env:
+          PUBLIC_URL: /react-udemy/eat-n-split
+        run: npm run build
+
+      - name: Publish Eat N Split
+        run: |
+          mkdir -p deploy/eat-n-split
+          cp -R 06-eat-n-split/starter/eat-n-split/build/. deploy/eat-n-split/
+
+      # ==================================================
+      # GITHUB PAGES
+      # ==================================================
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./deploy
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

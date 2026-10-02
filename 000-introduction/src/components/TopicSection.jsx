@@ -63,8 +63,6 @@ function TopicSection({ topic }) {
             >
               <h3>Section Overview</h3>
               <p>{topic.overview}</p>
-              <h3>Section Overview</h3>
-              <p>{topic.overview}</p>
 
               {topic.projectDescription && (
                 <>
