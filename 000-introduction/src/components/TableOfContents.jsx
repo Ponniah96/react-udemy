@@ -53,7 +53,13 @@ function TableOfContents({ topics, projects, videoInformation, extensions }) {
               <ul>
                 {projects.map((project) => (
                   <li key={project.id}>
-                    <a href={`#${project.id}`}>{project.projectName}</a>
+                    <a
+                      href={project.projectLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {project.projectName}
+                    </a>
                   </li>
                 ))}
               </ul>

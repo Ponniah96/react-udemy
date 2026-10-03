@@ -85,12 +85,18 @@ function TopicSection({ topic }) {
                   activeTab === "projectKeyPoints" ? "active" : ""
                 }`}
               >
-                <h3>Project Key Points</h3>
                 {topic.projectName && (
-                  <p className="project-badge">
-                    Project: <strong>{topic.projectName}</strong>
-                  </p>
+                  <a
+                    href={topic.projectLink ? topic.projectLink : "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <p className="project-badge">
+                      Project: <strong>{topic.projectName}</strong>
+                    </p>
+                  </a>
                 )}
+                <h3>Project Key Points</h3>
 
                 <ul>
                   {topic.projectKeyPoints.map((point, i) => (

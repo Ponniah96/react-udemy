@@ -82,7 +82,47 @@ jobs:
           cp -R 03-pizza-menu/starter/pizza-app/build/. deploy/pizza-menus/
 
       # ==================================================
-      # 3. EAT N SPLIT
+      # 3. STEPS
+      # CREATE REACT APP
+      # ==================================================
+
+      - name: Install Steps dependencies
+        working-directory: 04-steps/starter/steps
+        run: npm ci
+
+      - name: Build Steps
+        working-directory: 04-steps/starter/steps
+        env:
+          PUBLIC_URL: /react-udemy/steps
+        run: npm run build
+
+      - name: Publish Steps
+        run: |
+          mkdir -p deploy/steps
+          cp -R 04-steps/starter/steps/build/. deploy/steps/
+
+      # ==================================================
+      # 4. TRAVEL LIST
+      # CREATE REACT APP
+      # ==================================================
+
+      - name: Install Travel List dependencies
+        working-directory: 05-travel-list/starter/travel-app
+        run: npm ci
+
+      - name: Build Travel List
+        working-directory: 05-travel-list/starter/travel-app
+        env:
+          PUBLIC_URL: /react-udemy/travel-list
+        run: npm run build
+
+      - name: Publish Travel List
+        run: |
+          mkdir -p deploy/travel-list
+          cp -R 05-travel-list/starter/travel-app/build/. deploy/travel-list/
+
+      # ==================================================
+      # 5. EAT N SPLIT
       # CREATE REACT APP
       # ==================================================
 
