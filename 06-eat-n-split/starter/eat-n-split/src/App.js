@@ -23,9 +23,9 @@ import { useState } from "react";
 //   },
 // ];
 
-function Button({ children, onClick }) {
+function Button({ children, onClick, className }) {
   return (
-    <button className="button" onClick={onClick}>
+    <button className={`button ${className || ""}`} onClick={onClick}>
       {children}
     </button>
   );
@@ -84,6 +84,15 @@ export default function App() {
     );
   };
 
+  //Handle paying the bill for a friend
+  const handlePayBill = (id) => {
+    setFriends((prevFriends) =>
+      prevFriends.map((friend) =>
+        friend.id === id ? { ...friend, alreadyPaid: true } : friend,
+      ),
+    );
+  };
+
   return (
     <div className="app">
       <h1
@@ -93,7 +102,11 @@ export default function App() {
         Eat-N-Split
       </h1>
       <div className="sidebar">
-        <FreindList initialFriends={friends} paidFriend={paidFriend} />
+        <FreindList
+          initialFriends={friends}
+          paidFriend={paidFriend}
+          handlePayBill={handlePayBill}
+        />
         {showSelectedFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
         <Button onClick={handleToggleAddFriendForm}>
           {showSelectedFriend ? "Close" : "Add friend"}
@@ -116,17 +129,22 @@ export default function App() {
 }
 
 // Display Friend's List
-function FreindList({ initialFriends, paidFriend }) {
+function FreindList({ initialFriends, paidFriend, handlePayBill }) {
   return (
     <ul>
       {initialFriends.map((friend) => (
-        <Friend key={friend.id} {...friend} paidFriend={paidFriend} />
+        <Friend
+          key={friend.id}
+          {...friend}
+          paidFriend={paidFriend}
+          handlePayBill={handlePayBill}
+        />
       ))}
     </ul>
   );
 }
 
-function Friend({ paidFriend, ...friend }) {
+function Friend({ paidFriend, handlePayBill, ...friend }) {
   return (
     <li key={friend.id}>
       <h3>{friend.name}</h3>
@@ -138,13 +156,18 @@ function Friend({ paidFriend, ...friend }) {
       )}
 
       {/* Display who pays the bill. if friend.pays=true, then  it should diaply you paid the bill with green color */}
-      {friend.pays ? (
-        <p className="green">You paid ₹{Math.abs(friend.balance)} yourself</p>
-      ) : (
-        <p className="red">
-          You owe {paidFriend} ₹{Math.abs(friend.balance)}
-        </p>
-      )}
+      {friend.balance > 0 &&
+        (friend.pays ? (
+          <p className="green">You paid ₹{Math.abs(friend.balance)} yourself</p>
+        ) : !friend.alreadyPaid ? (
+          <p className="red">
+            You owe {paidFriend} ₹{Math.abs(friend.balance)}
+          </p>
+        ) : (
+          <p className="green">
+            You paid ₹{Math.abs(friend.balance)} to {paidFriend}
+          </p>
+        ))}
 
       {/* {friend.balance < 0 && (
         <p className="red">
@@ -158,7 +181,12 @@ function Friend({ paidFriend, ...friend }) {
       )}
       {friend.balance === 0 && <p>You and {friend.name} are even</p>} */}
 
-      {/* <Button>Select</Button> */}
+      {friend.balance > 0 && !friend.pays && !friend.alreadyPaid && (
+        // Add pay-button class to the child component to style it as a pay button
+        <Button onClick={() => handlePayBill(friend.id)} className="pay-button">
+          Pay
+        </Button>
+      )}
     </li>
   );
 }
@@ -176,6 +204,7 @@ function FormAddFriend({ onAddFriend }) {
       image,
       balance: 0,
       pays: false,
+      alreadyPaid: false,
     };
     onAddFriend(newFriend);
     setName("");
