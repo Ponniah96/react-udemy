@@ -31,7 +31,7 @@ function App() {
       ))}
 
       <PdfEmbed
-        src="/theory-slides-v1.1.pdf"
+        src="theory-slides-v1.1.pdf"
         title="PPT for the Entire Course"
       />
     </div>
