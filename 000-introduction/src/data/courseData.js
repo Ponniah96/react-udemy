@@ -18,12 +18,12 @@ export const topics = [
       "Why React is needed",
     ],
     images: [
-      "/images/react-1.png",
-      "/images/react-2.png",
-      "/images/react-3.png",
-      "/images/react-4.png",
+      "images/react-1.png",
+      "images/react-2.png",
+      "images/react-3.png",
+      "images/react-4.png",
     ],
-    codeimages: ["/images/react-5.png"],
+    codeimages: ["images/react-5.png"],
   },
   {
     id: "react-intro",
